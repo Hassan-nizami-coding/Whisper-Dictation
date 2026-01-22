@@ -186,9 +186,10 @@ export class GroqWhisperService implements ITranscriptionService {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${this.apiKey}`,
-          ...formData.getHeaders(),
+          // Note: When passing FormData directly to fetch, 
+          // don't set Content-Type header manually, fetch will do it with the boundary
         },
-        body: formData.getBuffer(),
+        body: formData as any, // form-data package is compatible with fetch
         signal: controller.signal,
       });
 
