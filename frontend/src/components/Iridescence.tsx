@@ -105,9 +105,12 @@ export default function Iridescence({ color = [1, 1, 1], speed = 1.0, amplitude 
 
     function resize() {
       if (!ctnDom.current) return;
+      const width = ctnDom.current.clientWidth;
+      const height = ctnDom.current.clientHeight;
+      
       renderer.setSize(
-        ctn.offsetWidth * RENDER_SCALE,
-        ctn.offsetHeight * RENDER_SCALE
+        width * RENDER_SCALE,
+        height * RENDER_SCALE
       );
 
       if (program) {

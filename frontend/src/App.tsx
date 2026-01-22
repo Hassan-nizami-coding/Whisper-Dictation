@@ -209,7 +209,7 @@ export function App() {
           speed={1.0}
           amplitude={0.15}
           mouseReact={true}
-          className="opacity-100 transition-opacity duration-1000 fixed inset-0 z-0"
+          className="fixed inset-0 z-[-1] pointer-events-none"
         />
       </Suspense>
 
