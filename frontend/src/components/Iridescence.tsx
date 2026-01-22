@@ -1,5 +1,6 @@
 import { Renderer, Program, Mesh, Color, Triangle } from 'ogl';
 import { useEffect, useRef } from 'react';
+import { clsx } from 'clsx';
 
 import './Iridescence.css';
 
@@ -50,7 +51,7 @@ void main() {
 }
 `;
 
-export default function Iridescence({ color = [1, 1, 1], speed = 1.0, amplitude = 0.1, mouseReact = true, ...rest }: { color?: [number, number, number], speed?: number, amplitude?: number, mouseReact?: boolean, [key: string]: any }) {
+export default function Iridescence({ color = [1, 1, 1], speed = 1.0, amplitude = 0.1, mouseReact = true, className, ...rest }: { color?: [number, number, number], speed?: number, amplitude?: number, mouseReact?: boolean, className?: string, [key: string]: any }) {
   const ctnDom = useRef<HTMLDivElement>(null);
   const mousePos = useRef({ x: 0.5, y: 0.5 });
   const mouseUpdatePending = useRef(false);
@@ -105,8 +106,8 @@ export default function Iridescence({ color = [1, 1, 1], speed = 1.0, amplitude 
 
     function resize() {
       if (!ctnDom.current) return;
-      const width = ctnDom.current.clientWidth;
-      const height = ctnDom.current.clientHeight;
+      const width = window.innerWidth;
+      const height = window.innerHeight;
       
       renderer.setSize(
         width * RENDER_SCALE,
@@ -207,5 +208,5 @@ export default function Iridescence({ color = [1, 1, 1], speed = 1.0, amplitude 
     }
   }, [color, speed, amplitude]);
 
-  return <div ref={ctnDom} className="iridescence-container" {...rest} />;
+  return <div ref={ctnDom} className={clsx("iridescence-container", className)} {...rest} />;
 }
