@@ -151,6 +151,12 @@ export function App() {
       let errorMessage = 'Failed to transcribe audio. Please try again.';
       
       if (err instanceof ApiError) {
+        console.error('API Error Details:', {
+          code: err.code,
+          statusCode: err.statusCode,
+          details: err.details
+        });
+
         if (err.isRateLimited) {
           errorMessage = 'Too many requests. Please wait a moment and try again.';
         } else if (err.isServerError) {

@@ -49,9 +49,9 @@ export class TranscriptionController {
         throw new MissingAudioError();
       }
 
-      // Check for minimum file size (4KB) to avoid empty/header-only files
-      if (file.size < 4096) {
-        throw new ValidationError('Audio file is too small (minimum 4KB required). Please record for at least 1 second.');
+      // Check for minimum file size (1KB) to avoid empty/header-only files
+      if (file.size < 1024) {
+        throw new ValidationError('Audio file is too small. Please record for at least 1 second.');
       }
 
       logger.debug({
