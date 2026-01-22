@@ -1,6 +1,7 @@
 {
   "name": "whisper-dictation-root",
   "private": true,
+  "type": "module",
   "workspaces": [
     "backend",
     "frontend"

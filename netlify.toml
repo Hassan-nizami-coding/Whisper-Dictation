@@ -6,6 +6,8 @@
 
 [functions]
   node_bundler = "esbuild"
+
+[functions."*"]
   node_format = "esm"
 
 [[redirects]]
